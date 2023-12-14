@@ -18,9 +18,8 @@ func GetMetaData() {
 }
 
 func GetStudy(studyId string) {
-	AddNewParamToQueryString("query.term", studyId)
-	AddDefault()
-	AddTotalCount()
+	AddStardard()
+	AddQueryTerm(studyId)
 	fmt.Println(queryString.String())
 
 	url := studiesBaseUrl + queryString.String()
