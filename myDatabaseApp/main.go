@@ -30,6 +30,9 @@ type PetStore struct {
 	Zip     string 
 }
 
+// Learned From: 
+// https://www.sqliz.com/posts/golang-gorm-mysql/
+// https://gorm.io/docs/index.html
 func main() {
 	db, err := connnectToMySql()
 	if err != nil {
