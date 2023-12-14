@@ -1,10 +1,9 @@
-package initializers
+package main
 
 import (
 	"fmt"
 	"os"
 
-	"github.com/binaryNomad/golang-learning/myFirstRestApi/models"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
@@ -23,10 +22,4 @@ func ConnectToDatabase() {
 	}
 
 	fmt.Println(DB.Statement)
-}
-
-func SyncDB() {
-	DB.AutoMigrate(&models.PetStoreDb{})
-
-
 }
