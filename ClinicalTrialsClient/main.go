@@ -30,14 +30,9 @@ func GetJson(url string, target interface{}) error {
 func main() {
 	client = &http.Client{Timeout: 10 * time.Second}
 
-	//GetVersion()
-	//GetMetaData()
-	//searchConditions := []string{"flu"}
-	//GetStudyByConditions(searchConditions)
-
 	//create router
 	r := mux.NewRouter()
-	//r.HandleFunc("/study", GetStudyByConditions()).Methods("GET")
+	r.HandleFunc("/study", GetStudy).Methods("GET")
 	r.HandleFunc("/study/{studyId}", GetStudyById).Methods("GET")
 
 	// start server

@@ -2,41 +2,19 @@ package main
 
 import (
 	"encoding/json"
-	"fmt"
-	"log"
 	"net/http"
 
 	"github.com/gorilla/mux"
 )
 
-var studiesBaseUrl string = baseUrl + "/studies"
+func GetStudy(w http.ResponseWriter, r *http.Request) {
+	// Make call to ClinicalTrials API
+	AddStardard()
+	AddPageSize(5)
+	response := baseGetStudy(queryString.String())
 
-func GetMetaData() {
-	url := studiesBaseUrl + "/metadata"
-
-	var studyMetaData []MetaData
-
-	err := GetJson(url, &studyMetaData)
-	if err != nil {
-		fmt.Printf("Error: %s\n", err.Error())
-	} else {
-		fmt.Printf("Response: %s", studyMetaData)
-	}
-}
-
-func baseGetStudy(queryString string) Studies {
-	fmt.Println(queryString)
-
-	url := studiesBaseUrl + queryString
-
-	var studies Studies
-
-	err := GetJson(url, &studies)
-	if err != nil {
-		log.Fatal(err)
-	} 
-
-	return studies
+	// Encode and Return response
+	json.NewEncoder(w).Encode(&response)
 }
 
 func GetStudyById(w http.ResponseWriter, r *http.Request) {
@@ -51,6 +29,8 @@ func GetStudyById(w http.ResponseWriter, r *http.Request) {
 	// Encode and Return response
 	json.NewEncoder(w).Encode(&response)
 }
+
+
 
 // func GetStudyByConditions(w http.ResponseWriter, r *http.Request) {
 // 	// GET Parameters from Request
