@@ -17,7 +17,7 @@ func AddTotalCount() {
 }
 
 func AddPageSize(pageSize int) {
-	if(pageSize > 25){
+	if pageSize > 25 {
 		pageSize = 25
 	}
 	AddNewParamToQueryString("pageSize", strconv.Itoa(pageSize))

@@ -1,16 +1,13 @@
 package main
 
-import "fmt"
+import (
+	"encoding/json"
+	"net/http"
+)
 
-func GetVersion() {
-	url := baseUrl + "/version"
+func GetVersion(w http.ResponseWriter, r *http.Request) {
+	response := GetVersionData()
 
-	var version Version
-
-	err := GetJson(url, &version)
-	if err != nil {
-		fmt.Printf("Error -- %s\n", err.Error())
-	} else {
-		fmt.Printf("Response: %s", version)
-	}
+	// Encode and Return response
+	json.NewEncoder(w).Encode(&response)
 }
