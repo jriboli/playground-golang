@@ -29,24 +29,24 @@ type MetaData struct {
 // ---------------------------------------------------------------------
 
 type StudyResponse struct {
-	NCTId                 string           `json:"nctId"`
-	BriefTitle            string           `json:"briefTitle"`
-	OverallStatus         string           `json:"overallStatus"`
-	Conditions            []string         `json:"conditions"`
-	Phases                []string         `json:"phases"`
-	StudyType             string           `json:"studyType"`
-	EnrollmentCount       string           `json:"enrollmentCount"`
-	FirstPostDate         string           `json:"firstPostDate"`
-	StartDate             string           `json:"startDate"`
-	LastUpdatePostDate    string           `json:"lastUpdatePostDate"`
-	PrimaryCompletionDate string           `json:"primaryCompletionDate"`
+	NCTId                 string             `json:"nctId"`
+	BriefTitle            string             `json:"briefTitle"`
+	OverallStatus         string             `json:"overallStatus"`
+	Conditions            []string           `json:"conditions"`
+	Phases                []string           `json:"phases"`
+	StudyType             string             `json:"studyType"`
+	EnrollmentCount       string             `json:"enrollmentCount"`
+	FirstPostDate         string             `json:"firstPostDate"`
+	StartDate             string             `json:"startDate"`
+	LastUpdatePostDate    string             `json:"lastUpdatePostDate"`
+	PrimaryCompletionDate string             `json:"primaryCompletionDate"`
 	Contacts              []ContactsResponse `json:"contacts"`
-	OrganizationFullName  string           `json:"organizationFullName"`
-	BriefSummary          string           `json:"briefSummary"`
-	EligibilityCriteria   string           `json:"eligibilityCriteria"`
-	EligibilitySex        string           `json:"eligibilitySex"`
-	EligibilityMinAge     string           `json:"eligibilityMinAge"`
-	EligibilityMaxAge     string           `json:"eligibilityMaxAge"`
+	OrganizationFullName  string             `json:"organizationFullName"`
+	BriefSummary          string             `json:"briefSummary"`
+	EligibilityCriteria   string             `json:"eligibilityCriteria"`
+	EligibilitySex        string             `json:"eligibilitySex"`
+	EligibilityMinAge     string             `json:"eligibilityMinAge"`
+	EligibilityMaxAge     string             `json:"eligibilityMaxAge"`
 }
 
 type ContactsResponse struct {

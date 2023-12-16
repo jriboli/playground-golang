@@ -25,7 +25,7 @@ func AddPageSize(pageSize int) {
 }
 
 func AddResponseFields() {
-	AddNewParamToQueryString("fields", "NCTId,BriefTitle,OverallStatus,Condition,Phase,StudyType,EnrollmentCount," +
+	AddNewParamToQueryString("fields", "NCTId,BriefTitle,OverallStatus,Condition,Phase,StudyType,EnrollmentCount,"+
 		"StudyFirstPostDate,StartDate,LastUpdatePostDate,CentralContactName,CentralContactEMail,OrgFullName,BriefSummary,EligibilityCriteria,Sex,MinimumAge,MaximumAge")
 }
 
@@ -34,7 +34,7 @@ func AddQueryTerm(conditions string) {
 }
 
 func AddFilter() {
-	AddNewParamToQueryString("filter.advanced", "(((AREA[Phase] \"Phase 2\" OR AREA[Phase] \"Phase 3\" OR AREA[Phase] \"Phase 4\")" + 
+	AddNewParamToQueryString("filter.advanced", "(((AREA[Phase] \"Phase 2\" OR AREA[Phase] \"Phase 3\" OR AREA[Phase] \"Phase 4\")"+
 		"AND (AREA[LeadSponsorClass] Industry OR AREA[CollaboratorClass] Industry) NOT (AREA[CentralContactEMail]MISSING)))")
 }
 

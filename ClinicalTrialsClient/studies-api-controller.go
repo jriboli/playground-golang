@@ -12,7 +12,7 @@ import (
 )
 
 type Filter struct {
-	Name string `json:"name"`
+	Name       string   `json:"name"`
 	Conditions []string `json:"conditions"`
 }
 
@@ -32,7 +32,7 @@ func GetStudy(w http.ResponseWriter, r *http.Request) {
 
 	queryTerm := strings.Builder{}
 	for index, condition := range decodedFilter.Conditions {
-		if(index > 0){
+		if index > 0 {
 			queryTerm.WriteString(" OR ")
 		}
 		queryTerm.WriteString(condition)
@@ -47,7 +47,7 @@ func GetStudy(w http.ResponseWriter, r *http.Request) {
 
 	response := GetStudyData(queryString.String())
 	var simplifiedResponse []StudyResponse
-	simplifiedResponse = populateStudyResponse(response) 
+	simplifiedResponse = populateStudyResponse(response)
 
 	// Encode and Return response
 	json.NewEncoder(w).Encode(&simplifiedResponse)
@@ -87,7 +87,7 @@ func GetStudyById(w http.ResponseWriter, r *http.Request) {
 // }
 
 func populateStudyResponse(studies Studies) []StudyResponse {
-	var responseHolder []StudyResponse 
+	var responseHolder []StudyResponse
 
 	for _, study := range studies.Studies {
 		var studyHolder StudyResponse
