@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"strconv"
 	"strings"
 )
@@ -24,7 +25,8 @@ func AddPageSize(pageSize int) {
 }
 
 func AddResponseFields() {
-	AddNewParamToQueryString("fields", "NCTId,BriefTitle,OverallStatus,Condition,Phase,StudyType,EnrollmentCount,StudyFirstPostDate,StartDate,LastUpdatePostDate,CentralContactName,CentralContactEMail")
+	AddNewParamToQueryString("fields", "NCTId,BriefTitle,OverallStatus,Condition,Phase,StudyType,EnrollmentCount," +
+		"StudyFirstPostDate,StartDate,LastUpdatePostDate,CentralContactName,CentralContactEMail,OrgFullName,BriefSummary,EligibilityCriteria,Sex,MinimumAge,MaximumAge")
 }
 
 func AddQueryTerm(conditions string) {
@@ -32,7 +34,8 @@ func AddQueryTerm(conditions string) {
 }
 
 func AddFilter() {
-	AddNewParamToQueryString("filter.advanced", "(((AREA[Phase] \"Phase 2\" OR AREA[Phase] \"Phase 3\" OR AREA[Phase] \"Phase 4\") AND (AREA[LeadSponsorClass] Industry OR AREA[CollaboratorClass] Industry) NOT (AREA[CentralContactEMail]MISSING)))")
+	AddNewParamToQueryString("filter.advanced", "(((AREA[Phase] \"Phase 2\" OR AREA[Phase] \"Phase 3\" OR AREA[Phase] \"Phase 4\")" + 
+		"AND (AREA[LeadSponsorClass] Industry OR AREA[CollaboratorClass] Industry) NOT (AREA[CentralContactEMail]MISSING)))")
 }
 
 func AddFilterOverallStatus() {
@@ -58,5 +61,13 @@ func AddNewParamToQueryString(paramName string, paramValue string) {
 		queryString.WriteString("?")
 	}
 
-	queryString.WriteString(paramName + "=" + paramValue)
+	queryString.WriteString(paramName + "=" + BasicHtmlEncode(paramValue))
+}
+
+func BasicHtmlEncode(html string) string {
+	html = strings.Replace(html, " ", "%20", -1)
+	html = strings.ReplaceAll(html, "\"", "%22")
+
+	fmt.Println("Final query: " + html)
+	return html
 }

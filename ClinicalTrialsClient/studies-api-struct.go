@@ -7,7 +7,7 @@ type MetaData struct {
 	HistoricOnly string `json:"historicOnly"`
 	IndexedOnly  string `json:"indexedOnly"`
 	IsEnum       string `json:"isEnum"`
-	MaxChars     uint   `json:"maxChars"`
+	MaxChars     int    `json:"maxChars"`
 	Name         string `json:"name"`
 	Nested       bool   `json:"nested"`
 	Piece        string `json:"piece"`
@@ -25,10 +25,42 @@ type MetaData struct {
 // }
 
 // ---------------------------------------------------------------------
+// RESPONSE
+// ---------------------------------------------------------------------
+
+type StudyResponse struct {
+	NCTId                 string           `json:"nctId"`
+	BriefTitle            string           `json:"briefTitle"`
+	OverallStatus         string           `json:"overallStatus"`
+	Conditions            []string         `json:"conditions"`
+	Phases                []string         `json:"phases"`
+	StudyType             string           `json:"studyType"`
+	EnrollmentCount       string           `json:"enrollmentCount"`
+	FirstPostDate         string           `json:"firstPostDate"`
+	StartDate             string           `json:"startDate"`
+	LastUpdatePostDate    string           `json:"lastUpdatePostDate"`
+	PrimaryCompletionDate string           `json:"primaryCompletionDate"`
+	Contacts              []ContactsResponse `json:"contacts"`
+	OrganizationFullName  string           `json:"organizationFullName"`
+	BriefSummary          string           `json:"briefSummary"`
+	EligibilityCriteria   string           `json:"eligibilityCriteria"`
+	EligibilitySex        string           `json:"eligibilitySex"`
+	EligibilityMinAge     string           `json:"eligibilityMinAge"`
+	EligibilityMaxAge     string           `json:"eligibilityMaxAge"`
+}
+
+type ContactsResponse struct {
+	Name     string `json:"name"`
+	Phone    string `json:"phone"`
+	PhoneExt string `json:"phoneExt"`
+	Email    string `json:"email"`
+}
+
+// ---------------------------------------------------------------------
 // STUDIES
 // ---------------------------------------------------------------------
 type Studies struct {
-	TotalCount    uint    `json:"totalCount"`
+	TotalCount    int     `json:"totalCount"`
 	Studies       []Study `json:"studies"`
 	NextPageToken string  `json:"nextPageToken"`
 }
@@ -122,7 +154,7 @@ type ConditionsModule struct {
 
 type DesignModule struct {
 	StudyType              string              `json:"studyType"`
-	NPtrsToThisExpAccNctId uint                `json:"nPtrsToThisExpAccNctId"`
+	NPtrsToThisExpAccNctId int                 `json:"nPtrsToThisExpAccNctId"`
 	ExpandedAccessTypes    ExpandedAccessTypes `json:"expandedAccessTypes"`
 	PatientRegistry        bool                `json:"patientRegistry"`
 	TargetDuration         string              `json:"targetDuration"`
@@ -173,7 +205,7 @@ type IpdSharingStatementModule struct {
 
 type NameStruct struct {
 	FullName string `json:"fullName"`
-	_Class   string `json:"_class"`
+	//_Class   string `json:"_class"`
 }
 
 type DateStruct struct {
@@ -245,7 +277,7 @@ type BioSpec struct {
 }
 
 type EnrollmentInfo struct {
-	Count uint   `json:"count"`
+	Count int    `json:"count"`
 	Type  string `json:"type"`
 }
 
