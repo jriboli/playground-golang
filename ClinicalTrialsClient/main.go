@@ -12,10 +12,19 @@ import (
 // Use 			>> go run .
 // OR 			>> go run *.go
 func main() {
+
+	createDb()
+
+
 	//create router
 	r := mux.NewRouter()
-	r.HandleFunc("/study", GetStudy).Methods("GET")
+	r.HandleFunc("/study", GetStudies).Methods("GET")
 	r.HandleFunc("/study/{studyId}", GetStudyById).Methods("GET")
+	r.HandleFunc("/study/star", GetStarredStudies).Methods("GET")
+	r.HandleFunc("/study/{studyId}/star", AddStarToStudy).Methods("POST")
+	r.HandleFunc("/study/{studyId}/star", DeleteStarOnStudy).Methods("DELETE")
+	r.HandleFunc("/study/{studyId}/decline", DeclineStudy).Methods("POST")
+	
 
 	// start server
 	log.Fatal(http.ListenAndServe(":8000", jsonContentTypeMiddleware(r)))

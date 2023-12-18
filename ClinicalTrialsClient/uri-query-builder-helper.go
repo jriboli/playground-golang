@@ -42,6 +42,11 @@ func AddFilterOverallStatus() {
 	AddNewParamToQueryString("filter.overallStatus", "NOT_YET_RECRUITING,RECRUITING")
 }
 
+func AddSorting(sortBy string) {
+	// String format needs to be -- {field name}:{asc/desc}
+	AddNewParamToQueryString("sort", sortBy)
+}
+
 // BASIC SETUPS
 func AddStardard() {
 	AddDefaultParams()

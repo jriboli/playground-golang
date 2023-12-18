@@ -18,7 +18,7 @@ type Filter struct {
 
 // GET
 // https://stackoverflow.com/questions/46045756/retrieve-optional-query-variables-with-gorilla-mux
-func GetStudy(w http.ResponseWriter, r *http.Request) {
+func GetStudies(w http.ResponseWriter, r *http.Request) {
 	// GET query string parameters
 	pageSize := r.URL.Query().Get("pageSize")
 	recievedData := r.URL.Query()["filter"][0]
@@ -66,25 +66,28 @@ func GetStudyById(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(&response)
 }
 
-// func GetStudyByConditions(w http.ResponseWriter, r *http.Request) {
-// 	// GET Parameters from Request
-// 	params := mux.Vars(r)
+// Get all starred studies for a user
+func GetStarredStudies(w http.ResponseWriter, r *http.Request) {
+	// Does nothing yet
 
-// 	// Make call to ClinicalTrials API
-// 	queryTerm := strings.Builder{}
-// 	for index, condition := range params["conditions"] {
-// 		if(index > 0){
-// 			queryTerm.WriteString(" OR ")
-// 		}
-// 		queryTerm.WriteString(condition)
-// 	}
-// 	AddStardard()
-// 	AddQueryTerm(queryTerm.String())
-// 	response := baseGetStudy(queryTerm.String())
+	response := "{'message': 'Not yet coded'}"
+	json.NewEncoder(w).Encode(&response)
+}
 
-// 	// Encode and Return response
-// 	json.NewEncoder(w).Encode(&response)
-// }
+// Add a star to this study for a user
+func AddStarToStudy(w http.ResponseWriter, r *http.Request) {
+	// Does nothing yet
+}
+
+// Remove a star for this study and user
+func DeleteStarOnStudy(w http.ResponseWriter, r *http.Request) {
+	// Does nothing yet
+}
+
+// Remove the study from showing up in search again
+func DeclineStudy(w http.ResponseWriter, r *http.Request) {
+	// Does nothing yet
+}
 
 func populateStudyResponse(studies Studies) []StudyResponse {
 	var responseHolder []StudyResponse
