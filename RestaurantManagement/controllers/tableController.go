@@ -1,9 +1,11 @@
 package controllers
 
-func GetTable() {
+import "net/http"
+
+func GetTable(w http.ResponseWriter, r *http.Request) {
 
 }
 
-func AddTable() {
-	
+func AddTable(w http.ResponseWriter, r *http.Request) {
+
 }

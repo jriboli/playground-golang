@@ -1,9 +1,11 @@
 package controllers
 
-func GetOrder() {
+import "net/http"
+
+func GetOrder(w http.ResponseWriter, r *http.Request) {
 
 }
 
-func AddOrder() {
-	
+func AddOrder(w http.ResponseWriter, r *http.Request) {
+
 }

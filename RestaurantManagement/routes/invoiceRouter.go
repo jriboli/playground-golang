@@ -9,6 +9,6 @@ import (
 func AddInvoiceRoutes(r *mux.Router) {
 	foodRouter := r.PathPrefix("/api").Subrouter()
 
-	foodRouter.HandleFunc("/endpoint1", controllers.GetInvoice()).Methods("GET")
-	foodRouter.HandleFunc("/endpoint2", controllers.AddInvoice()).Methods("POST")
+	foodRouter.HandleFunc("/invoices", controllers.GetInvoice).Methods("GET")
+	foodRouter.HandleFunc("/invoices", controllers.AddInvoice).Methods("POST")
 }

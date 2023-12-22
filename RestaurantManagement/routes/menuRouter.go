@@ -9,6 +9,6 @@ import (
 func AddMenuRoutes(r *mux.Router) {
 	foodRouter := r.PathPrefix("/api").Subrouter()
 
-	foodRouter.HandleFunc("/endpoint1", controllers.GetMenu()).Methods("GET")
-	foodRouter.HandleFunc("/endpoint2", controllers.AddMenu()).Methods("POST")
+	foodRouter.HandleFunc("/menus", controllers.GetMenu).Methods("GET")
+	foodRouter.HandleFunc("/menus", controllers.AddMenu).Methods("POST")
 }

@@ -9,6 +9,8 @@ import (
 func AddUserRoutes(r *mux.Router) {
 	foodRouter := r.PathPrefix("/api").Subrouter()
 
-	foodRouter.HandleFunc("/endpoint1", controllers.GetUser()).Methods("GET")
-	foodRouter.HandleFunc("/endpoint2", controllers.AddUser()).Methods("POST")
+	foodRouter.HandleFunc("/users", controllers.GetUser).Methods("GET")
+	foodRouter.HandleFunc("/users/{user_id}", controllers.GetUser).Methods("GET")
+	foodRouter.HandleFunc("/users/signup", controllers.AddUser).Methods("POST")
+	foodRouter.HandleFunc("/users/login", controllers.AuthenticateUser).Methods("POST")
 }

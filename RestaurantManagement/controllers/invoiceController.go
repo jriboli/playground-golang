@@ -1,9 +1,11 @@
 package controllers
 
-func GetInvoice() {
+import "net/http"
+
+func GetInvoice(w http.ResponseWriter, r *http.Request) {
 
 }
 
-func AddInvoice() {
-	
+func AddInvoice(w http.ResponseWriter, r *http.Request) {
+
 }

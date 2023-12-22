@@ -1,9 +1,11 @@
 package controllers
 
-func GetMenu() {
+import "net/http"
+
+func GetMenu(w http.ResponseWriter, r *http.Request) {
 
 }
 
-func AddMenu() {
-	
+func AddMenu(w http.ResponseWriter, r *http.Request) {
+
 }
