@@ -15,7 +15,9 @@ import (
 	"github.com/gorilla/mux"
 )
 
-var foodDb *sql.DB = database.connnectToMySql();
+// OMG and this took forever --- DONT FORGET
+// Ensure that the functions you are trying to call are exported (start with an uppercase letter) in their respective packages
+var foodDb *sql.DB = database.ConnnectToMySql();
 
 func main() {
 	port := os.Getenv("PORT")
@@ -36,6 +38,8 @@ func main() {
 	routes.AddUserRoutes(r)
 
 	// Start Server
-	log.Fatal(http.ListenAndServe(":"+port, middleware.jsonContentTypeMiddleware(r)))
+	// OMG and this took forever --- DONT FORGET
+	// Ensure that the functions you are trying to call are exported (start with an uppercase letter) in their respective packages
+	log.Fatal(http.ListenAndServe(":"+port, middleware.JsonContentTypeMiddleware(r)))
 }
 

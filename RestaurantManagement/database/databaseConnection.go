@@ -5,7 +5,7 @@ import (
 	"fmt"
 )
 
-func connnectToMySql() (*sql.DB) {
+func ConnnectToMySql() (*sql.DB) {
 	// Replace with your MySQL database connection details
     connectionString := "user:password@tcp(localhost:3306)/dbname"
 
@@ -30,7 +30,7 @@ func connnectToMySql() (*sql.DB) {
 	return db
 }
 
-func executeQuery(db *sql.DB) {
+func ExecuteQuery(db *sql.DB) {
 	// Execute a SELECT query
 	rows, err := db.Query("SELECT id, name FROM your_table")
 	if err != nil {
