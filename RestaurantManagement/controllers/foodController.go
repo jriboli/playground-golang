@@ -14,7 +14,8 @@ import (
 func GetFoods(w http.ResponseWriter, r *http.Request) {
 	retrievedFoods, err := database.GetFoods()
 	if err != nil {
-		panic(err.Error())
+		http.Error(w, "Unable to find Foods", http.StatusNotFound)
+		return
 	}
 
 	fmt.Printf("Retrieved food: %+v\n", retrievedFoods)
@@ -27,11 +28,14 @@ func GetFood(w http.ResponseWriter, r *http.Request) {
 	id, err := strconv.Atoi(vars["food_id"])
 	if err != nil {
 		fmt.Println("Error: ID is not a number")
+		http.Error(w, "Invalid Food Id", http.StatusBadRequest)
+		return
 	}
 
 	retrievedFood, err := database.GetFood(id)
 	if err != nil {
-		panic(err.Error())
+		http.Error(w, "Unable to find Food with ID="+strconv.Itoa(id), http.StatusNotFound)
+		return
 	}
 
 	fmt.Printf("Retrieved food: %+v\n", retrievedFood)
@@ -46,6 +50,8 @@ func CreateFood(w http.ResponseWriter, r *http.Request) {
 	f_id, err := database.CreateFood(f)
 	if err != nil {
 		fmt.Println("Error creating Food. -- " + err.Error())
+		http.Error(w, "Error creating Food", http.StatusInternalServerError)
+		return
 	}
 
 	f.ID = uint(f_id)
@@ -71,11 +77,14 @@ func DeleteFood(w http.ResponseWriter, r *http.Request) {
 	id, err := strconv.Atoi(vars["food_id"])
 	if err != nil {
 		fmt.Println("Error: ID is not a number")
+		http.Error(w, "Invalid Food Id", http.StatusBadRequest)
+		return
 	}
 
 	err = database.DeleteFood(id)
 	if err != nil {
-		panic(err.Error())
+		http.Error(w, "Unable to find Food with ID="+strconv.Itoa(id), http.StatusNotFound)
+		return
 	}
 
 	json.NewEncoder(w).Encode("Food deleted")
