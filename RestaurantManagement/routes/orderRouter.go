@@ -9,6 +9,8 @@ import (
 func AddOrderRoutes(r *mux.Router) {
 	foodRouter := r.PathPrefix("/api").Subrouter()
 
-	foodRouter.HandleFunc("/orders", controllers.GetOrder).Methods("GET")
-	foodRouter.HandleFunc("/orders", controllers.AddOrder).Methods("POST")
+	foodRouter.HandleFunc("/orders", controllers.GetOrders).Methods("GET")
+	foodRouter.HandleFunc("/orders/{order_id}", controllers.GetOrder).Methods("GET")
+	foodRouter.HandleFunc("/orders", controllers.CreateOrder).Methods("POST")
+	foodRouter.HandleFunc("/orders/{Order_id}", controllers.UpdateOrder).Methods("PUT")
 }
