@@ -21,6 +21,11 @@ func GetFoods(w http.ResponseWriter, r *http.Request) {
 	fmt.Printf("Retrieved food: %+v\n", retrievedFoods)
 
 	json.NewEncoder(w).Encode(retrievedFoods)
+
+	// aggregation
+	// matchStage	- find records in datasource
+	// groupStage 	- group records together
+	// projectStage	- how columns/info will be displayed to user
 }
 
 func GetFood(w http.ResponseWriter, r *http.Request) {
