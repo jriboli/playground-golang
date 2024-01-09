@@ -1,0 +1,4 @@
+https://go.dev/doc/tutorial/getting-started
+
+- Go code is grouped into packages, and packages are grouped into modules
+- In Go, the := operator is a shortcut for declaring and initializing a variable in one line
