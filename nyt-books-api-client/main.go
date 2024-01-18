@@ -9,7 +9,7 @@ import (
 	"net/url"
 	"os"
 
-	"nyt-books-api/models"
+	"nyt-books-api-client/models"
 
 	"github.com/joho/godotenv"
 )
@@ -34,7 +34,21 @@ func main() {
 	}
 
 	// Wonder if we can use Stream of something relative to filter results
+	weeklyUpdatedList := listUpdatedWeekly(getListResp.Results)
+	for _, name := range weeklyUpdatedList {
+		//fmt.Printf("ListName: %+v",name)
+		fmt.Println("Name: " + name.ListName)
+		fmt.Println("Updated: " + name.Updated)
+	}
 
+	fmt.Println("---------------------------------------------------------------------")
+
+	weeklyUpdatedNotList := listUpdatedNotWeekly(getListResp.Results)
+	for _, name := range weeklyUpdatedNotList {
+		//fmt.Printf("ListName: %+v",name)
+		fmt.Println("Name: " + name.ListName)
+		fmt.Println("Updated: " + name.Updated)
+	}
 
 	searchListName := getListResp.Results[0].ListNameEncoded
 	getBooksResp, err := getBooksByListName(searchListName)
@@ -127,4 +141,28 @@ func getBooksByListName(listName string) (*models.GetBooksByListName, error) {
 	//log.Printf("API response as struct %+v\n", response)
 
 	return &response, nil
+}
+
+func listUpdatedWeekly(names []models.ListName) []models.ListName {
+	var results []models.ListName
+
+	for _, name := range names {
+		if name.Updated == "WEEKLY" {
+			results = append(results, name)
+		}
+	}
+
+	return results
+}
+
+func listUpdatedNotWeekly(names []models.ListName) []models.ListName {
+	var results []models.ListName
+
+	for _, name := range names {
+		if name.Updated != "WEEKLY" {
+			results = append(results, name)
+		}
+	}
+
+	return results
 }

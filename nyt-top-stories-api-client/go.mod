@@ -1,4 +1,4 @@
-module nyt-books-api-client
+module nyt-top-stories-api-client
 
 go 1.21.0
 
